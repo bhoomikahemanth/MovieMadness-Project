@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+
+    <title>index</title>
+</head>
+
+<body style="background-color: black">
+
+
+<!-- NAV BAR -->
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Zinc By Zancc</span>
+
+    <div>
+        <a class="btn btn-default" href="/viewMovies">Movies</a>
+        <a class="btn btn-default" href="/viewActors">Actors</a>
+    </div>
+
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+</nav>
+<!-- NAV BAR -->
+
+
+<!-- Banner -->
+<div>
+    <img STYLE="width: 100%; height: auto;" th:src="@{/images/zincb.webp}">
+</div>
+
+
+</body>
+</html>

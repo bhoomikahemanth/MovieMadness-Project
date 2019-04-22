@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+<!-- <p th:text="${data}">hi there </p> -->
+</body>
+<table class="table table-hover text-center">
+    <tr>
+<td>
+    <h5 class="align-middle" th:text="${data.getMovie_title()}"></h5>
+</td>
+<td>
+    <h5 class="align-middle" th:text="${data.getMovie_summery()}"></h5>
+</td>
+<td>
+    <h5 class="align-middle" th:text="${data.getMovie_duration()}"></h5>
+</td>
+<td>
+    <h5 class="align-middle" th:text="${data.getMovie_genre()}"></h5>
+</td>
+<td>
+    <h5 class="align-middle" th:text="${data.getMovie_release_date()}"></h5>
+</td>
+<td>
+    <img class="align-middle" th:src="${data.getMovie_cover_image()}"></img>
+</td>
+<td>
+    <iframe width="560" height="315" th:src="@{https://www.youtube.com/embed/{url}(url=${data.getMovie_trailer()} )}" frameborder="1" alt="no video attached" autoplay=1 ></iframe>
+</td>
+    </tr>
+    <tr>
+        <td>Review Id</td> <td>user ID</td> <td>Movie ID</td>
+<td> Review Comment</td>
+        <td> review Rating</td>
+        <td>Review Date</td>
+    </tr>
+       <tr  th:each="review1 :${review}" >
+           <td class="align-middle" th:text="${review1.getReview_id()}"></td>
+           <td class="align-middle" th:text="${review1.getUser_id()}"></td>
+           <td class="align-middle" th:text="${review1.getMovie_id()}"></td>
+           <td class="align-middle" th:text="${review1.getReview_comment()}"></td>
+           <td class="align-middle" th:text="${review1.getReview_rating()}"></td>
+           <td class="align-middle" th:text="${review1.getReview_date()}"></td>
+
+       </tr>
+
+
+    <tr>
+        <td>Actor Id</td> <td>actor Name</td> <td>Actor Age</td>
+        <td> Actro Gender</td>
+        <td> Actor image</td>
+
+    </tr>
+    <tr  th:each="actor:${cast}" >
+        <td class="align-middle" th:text="${actor.getActor_id()}"></td>
+        <td class="align-middle" th:text="${actor.getActor_name()}"></td>
+        <td class="align-middle" th:text="${actor.getActor_age()}"></td>
+        <td class="align-middle" th:text="${actor.getActor_gender()}"></td>
+        <td>
+            <img  th:height="150" th:width="150" class="align-middle" th:src="${actor.getActor_profile_image()}"></img>
+        </td>
+
+    </tr>
+</table>
+
+</html>

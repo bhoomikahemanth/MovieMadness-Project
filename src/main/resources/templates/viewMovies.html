@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Movies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<!-- NAV BAR -->
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Zinc By Zancc</span>
+
+    <div>
+        <a class="btn btn-default" href="/">Home</a>
+        <a class="btn btn-default" href="/viewActors">Actors</a>
+    </div>
+
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+</nav>
+<!-- NAV BAR -->
+
+
+
+<!-- Table -->
+<table class="table table-dark">
+    <thead class="thead-dark">
+    <tr>
+        <!-- left blank because no header lables are needed -->
+    </tr>
+    </thead>
+    <tr th:each="movies:${movie}">
+        <td class="align-middle"><img class="img-thumbnail w-100" th:src="${movies.getMovie_cover_image()}"/></td>
+        </td>
+        <td>
+            <h5 class="align-top" style="text-align: left" th:text="${movies.getMovie_title()}"></h5>
+            <p class="align-middle" style="text-align: left" th:text="${movies.getMovie_summery()}"></p>
+            <p style="float: left">Release Date: </p>
+            <p class="align-middle" style="text-align: left" th:text="${movies.getMovie_release_date()}"></p>
+            <p style="float: left">Duration: </p>
+            <p class="align-middle" style="text-align: left" th:text="${movies.getMovie_duration()}"></p>
+        </td>
+        <td>
+            <iframe class="embed-responsive-item" th:src="@{https://www.youtube.com/embed/{url}
+           (url=${movies.getMovie_trailer()})}"
+                    frameborder="0" allowfullscreen="1"></iframe>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!-- Table -->
+
+
+
+
+</body>
+</html>
