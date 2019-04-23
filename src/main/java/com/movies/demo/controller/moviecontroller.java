@@ -20,16 +20,16 @@ public class moviecontroller {
    private final reviewJdbc jdbcreview;
    private final actorjdbc actorsview;
    private final Castjdbc castjdbc;
-   private  final Userjdbc userjdbc;
+  // private  final Userjdbc userjdbc;
 
     @Autowired
-    public moviecontroller(Userjdbc userjdbc , Movie_Repository jdbcRepos, Castjdbc castjdbc , reviewJdbc jdbcreview, actorjdbc actorsview)
+    public moviecontroller( Movie_Repository jdbcRepos, Castjdbc castjdbc , reviewJdbc jdbcreview, actorjdbc actorsview)
     {
         this.jdbcRepos= jdbcRepos;
         this.jdbcreview= jdbcreview;
         this.actorsview= actorsview;
         this.castjdbc=castjdbc;
-        this.userjdbc= userjdbc;
+      //  this.userjdbc= userjdbc;
     }
     @GetMapping("/viewMovies")
     public String display (Model model){
@@ -50,52 +50,9 @@ model.addAttribute("cast",castjdbc.findCast(id));
             return"amovie";
         }
 
-        @GetMapping("/viewActors")
-    public String Actor_displayall(Model model){
-        model.addAttribute("all_actor",actorsview.findAll() );
-        return "viewActors";
 
-        }
 
-    @GetMapping("/viewActorPage")
-    public String Actor_display(@RequestParam(name ="id" , required = false, defaultValue = "1")int id, Model model){
-        model.addAttribute("actor",actorsview.findBYid(id) );
-        model.addAttribute("movies",castjdbc.findmovies(id));
-        return "viewActorPage";
 
-    }
-
-/*
-    @GetMapping("/Allactors")
-    public String Actor_displayall(Model model){
-        model.addAttribute("all_actor",actorsview.findAll() );
-        return "Allactors";
-
-    }
-    */
-
-/*
-    @GetMapping("/actor")
-    public String Actor_display(@RequestParam(name ="id" , required = false, defaultValue = "1")int id, Model model){
-        model.addAttribute("actor",actorsview.findBYid(id) );
-        model.addAttribute("movies",castjdbc.findmovies(id));
-        return "Actor";
-
-    }
-    */
-
-    @GetMapping("/Allusers")
-    public String user_displayAll(Model model){
-        model.addAttribute("users",userjdbc.findAll() );
-        return "AllUser";
-    }
-    @GetMapping("/user")
-    public String user_display(@RequestParam(name ="id" , required = false, defaultValue = "1")int id, Model model){
-        model.addAttribute("user",userjdbc.findByID(id) );
-
-        model.addAttribute("reviews", jdbcreview.findByuser(id));
-        return "User_pro";
-    }
 
 
 }
